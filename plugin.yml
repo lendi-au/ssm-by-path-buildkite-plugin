@@ -1,0 +1,18 @@
+name: SSM
+description: Retrieve parameters from ssm using path prefix
+author: https://github.com/seek-oss/ssm-buildkite-plugin
+public: true
+requirements:
+  - aws
+  - bash
+  - jq
+configuration:
+  properties:
+    assume-role-arn:
+      type: string
+    ssmpath:
+      type: string
+    recursive:
+      type: boolean
+  required:
+    - ssmpath
