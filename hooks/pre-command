@@ -5,7 +5,7 @@ set -o pipefail
 set -u
 
 main() {
-  local role="${BUILDKITE_PLUGIN_SSM_ASSUME_ROLE_ARN:-}"
+  local role="${BUILDKITE_PLUGIN_SSM_BY_PATH_ASSUME_ROLE_ARN:-}"
   local build="${BUILDKITE_BUILD_NUMBER:-}"
 
   if [[ -n $role && -n $build ]]; then
@@ -17,13 +17,13 @@ main() {
     echo "  AWS_SECRET_ACCESS_KEY=(${#AWS_SECRET_ACCESS_KEY} chars)"
     echo "  AWS_SESSION_TOKEN=(${#AWS_SESSION_TOKEN} chars)"
   else
-    echo "Missing BUILDKITE_PLUGIN_SSM_ASSUME_ROLE_ARN or BUILDKITE_BUILD_NUMBER"
+    echo "Missing BUILDKITE_PLUGIN_SSM_BY_PATH_ASSUME_ROLE_ARN or BUILDKITE_BUILD_NUMBER"
   fi
 
   local awsregion=${AWS_DEFAULT_REGION:-us-east-1}
-  local ssmpath="${BUILDKITE_PLUGIN_SSM_SSMPATH:-}"
+  local ssmpath="${BUILDKITE_PLUGIN_SSM_BY_PATH_SSMPATH:-}"
   local recursive
-  recursive=$(echo "${BUILDKITE_PLUGIN_SSM_RECURSIVE:-}" | tr '[:upper:]' '[:lower:]')
+  recursive=$(echo "${BUILDKITE_PLUGIN_SSM_BY_PATH_RECURSIVE:-}" | tr '[:upper:]' '[:lower:]')
 
   if [ "${recursive}" = 'true' ]; then
     recursive='--recursive'

@@ -1,6 +1,6 @@
-name: SSM
+name: SSM_BY_PATH
 description: Retrieve parameters from ssm using path prefix
-author: https://github.com/seek-oss/ssm-buildkite-plugin
+author: https://github.com/lendi-au/ssm-by-path-buildkite-plugin
 public: true
 requirements:
   - aws
@@ -13,6 +13,6 @@ configuration:
     ssmpath:
       type: string
     recursive:
-      type: boolean
+      type: string
   required:
     - ssmpath
